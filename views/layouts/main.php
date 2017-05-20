@@ -62,7 +62,7 @@ $(document).ready(function(){
 
     echo'<form class="navbar-form navbar-left">
   <div class="input-group">
-    <input type="text" size="80" class="form-control" placeholder="Search Product...">
+    <input type="text" size="75" class="form-control" placeholder="Search Product...">
     <div class="input-group-btn">
       <button class="btn btn-warning" type="submit">
         <i class="glyphicon glyphicon-search"></i>
@@ -70,15 +70,15 @@ $(document).ready(function(){
     </div>
   </div>
 </form>';
-           
-      
+
+
 
 
         if(Yii::$app->user->isGuest) {
            echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-               
+
                  ' <a tabindex="0" class="btn btn-default" role="button" style="margin-top:8px;" data-html="true" data-toggle="popover"  data-content="   <form id=login-form class=form-horizontal action=/shop/login method=post role=form>
 <input type=hidden name=_csrf value='.Yii::$app->request->getCsrfToken().'>
         <div class=form-group field-loginform-email required>
@@ -103,9 +103,9 @@ $(document).ready(function(){
                 </div>
     </form>
 ">Login</a>'
-                 
+
             ],
-        ]); 
+        ]);
         }
 
         if(!Yii::$app->user->isGuest) {
@@ -121,9 +121,9 @@ $(document).ready(function(){
                 ],
 
                 ]
-                
+
             ],
-        ]); 
+        ]);
         }
 
         if(Yii::$app->user->isGuest) {
@@ -131,22 +131,22 @@ $(document).ready(function(){
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             Html::a('Sign Up',['/signup'],['class'=>'btn btn-default btn-default','style'=>'margin-top:8px;']),
-            '&nbsp;', 
+            '&nbsp;',
         ],
     ]);
 
         }
-                
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>',['cart'],['class'=>'btn btn-warning','style'=>'margin-top:8px;']),
-            '&nbsp; &nbsp;', 
+            '&nbsp; &nbsp;',
         ],
     ]);
 
 
-   
+
     NavBar::end();
     ?>
 
