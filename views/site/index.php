@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->params['siteName'];
@@ -52,205 +52,29 @@ $this->title = Yii::$app->params['siteName'];
     <div class="body-content">
 
         <div class="row">
+<?php
 
+$productWP = app\models\Products::find()->orderBy(['created_at'=>SORT_DESC])->all();
+
+if(!empty($productWP)) {
+    foreach ($productWP as $row) {
+ ?>
             <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>iGlove Sarung Tangan Touch Screen Untuk Smartphones & Tablet - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/61/9/13024/2/iglove-sarung-tangan-touch-screen-untuk-smartphones-and-tablet-black-148.jpg"></p>
-                <h4>Rp 13.500</h4>
-              </div>
-            </div>
-            </a>
+              <?= Html::a(
+                '  <div class="col-lg-3" align="center">
+                  <div class="thumbnail">
+                  <p>'.$row->product_name.'</p>
+                    <p><img  width="200px" src="'.Yii::$app->params['domainImg'].'/public/uploads/product/thumb-'.sha1($row->id_product).'1.jpg"></p>
+                    <h4>Rp '.number_format($row->price,"0",",",".").'</h4>
+                  </div>
+                </div>
+              ',['products/view','id'=>$row->id_product]) ?>
             </p>
 
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Dual USB Car Charger with LED Display 2.1A - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/15082/2/dual-usb-car-charger-with-led-display-21a-black-1.jpg"></p>
-                <h4>Rp 45.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Car Holder Smartphone Long Neck - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/17419/2/multi-long-neck-one-touch-car-and-desk-mount-black-1.jpg"></p>
-                <h4>Rp 30.000</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Tripod Mini Foldable 2 in 1 untuk DSLR - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/43/63/15047/2/2-in-1-portable-mini-folding-tripod-for-dslr-black-220.jpg"></p>
-                <h4>Rp 13.700</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>iGlove Sarung Tangan Touch Screen Untuk Smartphones & Tablet - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/61/9/13024/2/iglove-sarung-tangan-touch-screen-untuk-smartphones-and-tablet-black-148.jpg"></p>
-                <h4>Rp 13.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Dual USB Car Charger with LED Display 2.1A - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/15082/2/dual-usb-car-charger-with-led-display-21a-black-1.jpg"></p>
-                <h4>Rp 45.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Car Holder Smartphone Long Neck - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/17419/2/multi-long-neck-one-touch-car-and-desk-mount-black-1.jpg"></p>
-                <h4>Rp 30.000</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Tripod Mini Foldable 2 in 1 untuk DSLR - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/43/63/15047/2/2-in-1-portable-mini-folding-tripod-for-dslr-black-220.jpg"></p>
-                <h4>Rp 13.700</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>iGlove Sarung Tangan Touch Screen Untuk Smartphones & Tablet - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/61/9/13024/2/iglove-sarung-tangan-touch-screen-untuk-smartphones-and-tablet-black-148.jpg"></p>
-                <h4>Rp 13.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Dual USB Car Charger with LED Display 2.1A - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/15082/2/dual-usb-car-charger-with-led-display-21a-black-1.jpg"></p>
-                <h4>Rp 45.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Car Holder Smartphone Long Neck - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/17419/2/multi-long-neck-one-touch-car-and-desk-mount-black-1.jpg"></p>
-                <h4>Rp 30.000</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Tripod Mini Foldable 2 in 1 untuk DSLR - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/43/63/15047/2/2-in-1-portable-mini-folding-tripod-for-dslr-black-220.jpg"></p>
-                <h4>Rp 13.700</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>iGlove Sarung Tangan Touch Screen Untuk Smartphones & Tablet - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/61/9/13024/2/iglove-sarung-tangan-touch-screen-untuk-smartphones-and-tablet-black-148.jpg"></p>
-                <h4>Rp 13.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Dual USB Car Charger with LED Display 2.1A - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/15082/2/dual-usb-car-charger-with-led-display-21a-black-1.jpg"></p>
-                <h4>Rp 45.500</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Car Holder Smartphone Long Neck - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/73/63/17419/2/multi-long-neck-one-touch-car-and-desk-mount-black-1.jpg"></p>
-                <h4>Rp 30.000</h4>
-              </div>
-            </div>
-            </a>
-            </p>
-
-            <p>
-              <a href="http://www.yiiframework.com/doc/">
-              <div class="col-lg-3" align="center">
-              <div class="thumbnail">
-              <p>Tripod Mini Foldable 2 in 1 untuk DSLR - Black</p>
-                <p><img  width="200px" src="https://www.jakartanotebook.com/images/products/43/63/15047/2/2-in-1-portable-mini-folding-tripod-for-dslr-black-220.jpg"></p>
-                <h4>Rp 13.700</h4>
-              </div>
-            </div>
-            </a>
-            </p>
+            <?php
+          }
+          }
+          ?>
 
         </div>
 

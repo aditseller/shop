@@ -33,6 +33,9 @@ $(document).ready(function(){
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+  <?php
+
+   ?>
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->params['siteName'],
@@ -42,24 +45,31 @@ $(document).ready(function(){
         ],
     ]);
 
-        echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => [
-           ['label' => 'Categories','items'=> [
-                ['label'=>'Electronic','url'=>'#'],
-                ['label'=>'Electronic','url'=>'#'],
-                ['label'=>'Electronic','url'=>'#'],
-                ['label'=>'Electronic','url'=>'#'],
-                ['label'=>'Electronic','url'=>'#'],
-                ['label'=>'Electronic','url'=>'#'],
-                ['label'=>'Electronic','url'=>'#'],
+    ?>
+<ul  class="navbar-nav navbar-left nav">
+    <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
 
-           ],
 
-           ],
-        ],
-    ]);
+            <?php
+            $categories = app\models\Categories::find()->all();
+            foreach ($categories as $catrow) {
 
+                echo '<li><a href="'.$catrow->category.'">'.$catrow->category.'</a></li>';
+
+            }
+
+            ?>
+
+
+          </ul>
+        </li>
+      </ul>
+
+
+<?php
     echo'<form class="navbar-form navbar-left">
   <div class="input-group">
     <input type="text" size="75" class="form-control" placeholder="Search Product...">
