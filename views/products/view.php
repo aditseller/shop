@@ -6,26 +6,19 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Products */
 
-$this->title = $model->id_product;
+$this->title = $model->product_name;
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="products-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= $model->product_name ?></h3>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id_product], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id_product], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+<img src="<?= Yii::$app->params['domainImg'] ?>/public/uploads/product/<?= sha1($model->id_product) ?>1.jpg">
 
-    <?= DetailView::widget([
+    <?php /*
+
+     DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id_product',
@@ -42,6 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'sku',
             'discount',
         ],
-    ]) ?>
+    ])
+*/
+     ?>
+
+
 
 </div>
