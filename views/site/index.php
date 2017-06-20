@@ -3,6 +3,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->params['siteName'];
+
+
 ?>
 <div class="site-index">
 
@@ -58,17 +60,26 @@ $productWP = app\models\Products::find()->orderBy(['created_at'=>SORT_DESC])->al
 
 if(!empty($productWP)) {
     foreach ($productWP as $row) {
+
+      // final price
+      $ratediscount = $row->price * $row->discount / 100;
+      $finalprice = $row->price - $ratediscount;
+
+
  ?>
             <p>
-              <?= Html::a(
-                '  <div class="col-lg-3" align="center">
+              <a href="<?= $row->product_name ?>">
+                  <div class="col-lg-3" align="center">
                   <div class="thumbnail">
-                  <p>'.$row->product_name.'</p>
-                    <p><img  width="200px" src="'.Yii::$app->params['domainImg'].'/public/uploads/product/thumb-'.sha1($row->id_product).'1.jpg"></p>
-                    <h4>Rp '.number_format($row->price,"0",",",".").'</h4>
+                  <p style="height:40px"><?= $row->product_name ?></p>
+                    <p><img width="150px" src="<?= Yii::$app->params['domainImg']?>/public/uploads/product/thumb-<?= sha1($row->id_product)?>1.jpg"></p>
+                    <h4>Rp <?= number_format($finalprice,"0",",",".") ?></h4>
+
+
                   </div>
                 </div>
-              ',['products/view','id'=>$row->id_product]) ?>
+
+            </a>
             </p>
 
             <?php

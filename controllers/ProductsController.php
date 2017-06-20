@@ -8,6 +8,7 @@ use app\models\ProductsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use  yii\behaviors\SluggableBehavior;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
@@ -26,23 +27,16 @@ class ProductsController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
+            [
+            'class' => SluggableBehavior::className(),
+            'attribute' => 'product_name',
+            'slugAttribute' => 'slug',
+          ],
         ];
     }
 
-    /**
-     * Lists all Products models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new ProductsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
 
     /**
      * Displays a single Products model.
@@ -56,7 +50,20 @@ class ProductsController extends Controller
         ]);
     }
 
-    
+    //Sluggable function
+    public function actionSlug($slug) {
+
+   $model = Products::find()->where(['product_name'=>$slug])->one();
+   if (!is_null($model)) {
+       return $this->render('view', [
+           'model' => $model,
+       ]);
+   } else {
+     return $this->render('404',['exception'=>Yii::$app->errorHandler->exception]);
+   }
+ }
+
+
 
     /**
      * Finds the Products model based on its primary key value.

@@ -20,7 +20,12 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- fotorama.css & fotorama.js. -->
+<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
+
     <script type="text/javascript">
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({
@@ -124,7 +129,7 @@ $(document).ready(function(){
             'items' => [
                 ['label'=>Yii::$app->user->identity->fullname,'items'=> [
 
-                        ['label'=>'Settings','url'=>['/usersettings']],
+                        ['label'=>'My Profile','url'=>['/myprofile']],
                         ['label' => 'Logout', 'url' => ['/site/logout'],'linkOptions'=>['data-method'=>'post']],
 
 

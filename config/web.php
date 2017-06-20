@@ -38,17 +38,20 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                      'career/<id:\d+>' => 'products/view',
+                       '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                       '<slug>' => 'products/slug',
                     'login' => 'site/login',
                     'logout' => 'site/logout',
                     'signup' => 'users/signup',
             ],
         ],
-        
+
     ],
     'params' => $params,
 ];
