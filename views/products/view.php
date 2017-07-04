@@ -66,7 +66,12 @@ $finalprice = $model->price - $ratediscount;
 <?php } ?>
 <!--end price-->
 <hr/>
-<button class="btn buy"> Add to Cart</button>
+<form action="<?=Yii::$app->request->baseUrl; ?>/transaction/unpaid" method="post">
+<input type="hidden" name="id_product" value="<?= $model->id_product ?>">
+<input type="hidden" name="product_name" value="<?= $model->product_name ?>">
+<input type="hidden" name="total_price" value="<?= $finalprice ?>">
+<input type="submit" name="submit" value="Add to Cart" class="btn buy">
+</form>
 </div>
 
 

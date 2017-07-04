@@ -43,12 +43,13 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                      'career/<id:\d+>' => 'products/view',
+                      'products/<id:\d+>' => 'products/view',
                        '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                       '<slug>' => 'products/slug',
+                       'products/<slug>' => 'products/slug',
                     'login' => 'site/login',
                     'logout' => 'site/logout',
                     'signup' => 'users/signup',
+
             ],
         ],
 

@@ -68,7 +68,7 @@ if(!empty($productWP)) {
 
  ?>
             <p>
-              <a href="<?= $row->product_name ?>">
+              <a href="<?= Yii::$app->request->baseUrl; ?>/products/<?= $row->product_name ?>">
                   <div class="col-lg-3" align="center">
                   <div class="thumbnail">
                   <p style="height:40px"><?= $row->product_name ?></p>

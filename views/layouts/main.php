@@ -13,17 +13,19 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" ng-app>
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- fotorama.css & fotorama.js. -->
 <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 
     <script type="text/javascript">
@@ -155,7 +157,7 @@ $(document).ready(function(){
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>',['cart'],['class'=>'btn btn-warning','style'=>'margin-top:8px;']),
+            Html::a('<span class="glyphicon glyphicon-shopping-cart"></span>',['transaction/cart'],['class'=>'btn btn-warning','style'=>'margin-top:8px;']),
             '&nbsp; &nbsp;',
         ],
     ]);
